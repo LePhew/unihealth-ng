@@ -1,0 +1,7 @@
+{
+  "name": "unihealth-ng",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
