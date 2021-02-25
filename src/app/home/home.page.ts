@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GenericService } from '../services/generic.service';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,17 @@ export class HomePage {
   readonly isDisabled: boolean = false;
   readonly items = [];
 
-  constructor() {
+  readonly requestsEndpoint: string = 'request/';
+
+  constructor(private genericService: GenericService) {
     this.pushData();
   }
 
 
   pushData() {
-    const max = this.items.length + 20;
-    const min = max - 20;
-    for (let i = min; i < max; i++) {
-      this.items.push(i);
-    }
+    this.genericService.getAll(this.requestsEndpoint, (requests) => {
+      this.items.push(requests);
+    })
   }
 
   loadData(ev: any) {

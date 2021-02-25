@@ -4,14 +4,13 @@ import { IonicModule } from '@ionic/angular';
 
 //Components
 import { RequestCardComponent } from './request-card/request-card.component';
-import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     imports: [
         CommonModule,
         IonicModule
     ],
-    declarations: [RequestCardComponent, HeaderComponent],
-    exports: [RequestCardComponent, HeaderComponent]
+    declarations: [RequestCardComponent],
+    exports: [RequestCardComponent]
 })
 export class SharedModule { }
