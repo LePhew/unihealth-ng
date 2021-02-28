@@ -1,8 +1,5 @@
   <ion-header>
     <ion-toolbar class="header-background-color">
-      <ion-buttons slot="start">
-        <ion-back-button color="light"></ion-back-button>
-      </ion-buttons>
       <ion-title color="light">Health</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -17,6 +14,6 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
     <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button [routerLink]="['/requestform']" routerLinkActive="router-link-active" color="success"><ion-icon name="add"></ion-icon></ion-fab-button>
+      <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active"><ion-icon name="add"></ion-icon></ion-fab-button>
     </ion-fab>
 </ion-content>
