@@ -4,8 +4,8 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-list *ngFor="let item of items">
-      <app-request-card title="Joven accidentado" location="Santo Domingo Oeste" contact="809-333-3333"></app-request-card>
+    <ion-list *ngFor="let request of requests">
+      <app-request-card [title]="request.title" [city]="request.city" [bloodType]="request.bloodType" contact="809-333-3333"></app-request-card>
     </ion-list>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content

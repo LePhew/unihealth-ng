@@ -8,10 +8,10 @@ import { GenericService } from '../services/generic.service';
 })
 export class HomePage {
 
-  readonly isDisabled: boolean = false;
-  readonly items = [];
+  isDisabled: boolean = false;
+  requests: any = [];
 
-  readonly requestsEndpoint: string = 'request/';
+  requestsEndpoint: string = 'request/';
 
   constructor(private genericService: GenericService) {
     this.pushData();
@@ -20,7 +20,7 @@ export class HomePage {
 
   pushData() {
     this.genericService.getAll(this.requestsEndpoint, (requests) => {
-      this.items.push(requests);
+      this.requests = requests;
     })
   }
 
@@ -32,7 +32,7 @@ export class HomePage {
 
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
-      if (this.items.length == 1000) {
+      if (this.requests.length == 1000) {
         ev.target.disabled = true;
       }
     }, 500);

@@ -7,10 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RequestCardComponent implements OnInit {
 
-  @Input() title: string = "";
-  @Input() location: string = "";
-  @Input() contact: string = "";
+  @Input() title: string;
+  @Input() city: string;
+  @Input() contact: string;
+  @Input() bloodType: string
 
+  requestsEndpoint: string = '/assets/bloodTypes/a+.svg';
+  
   constructor() { }
 
   ngOnInit() { }
