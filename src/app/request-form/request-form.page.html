@@ -12,7 +12,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Titulo</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="requestForm.title"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -20,27 +20,38 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Tipo de sangre</ion-label>
-            <ion-input></ion-input>
+            <ion-select [(ngModel)]="requestForm.bloodType" interface="popover">
+              <ion-select-option value="A+">A+</ion-select-option>
+              <ion-select-option value="B+">B+</ion-select-option>
+              <ion-select-option value="AB+">AB+</ion-select-option>
+              <ion-select-option value="O+">O+</ion-select-option>
+              <ion-select-option value="B-">B-</ion-select-option>
+              <ion-select-option value="O-">O-</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Teléfono</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="requestForm.contact" (input)="phoneMask($event.target.value)"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col>
+        <ion-col class="country">
           <ion-item>
             <ion-label position="stacked">País</ion-label>
-            <ion-input></ion-input>
+            <ion-select  [(ngModel)]="requestForm.country" interface="popover">
+              <ion-select-option *ngFor="let country of countries" [value]="country">{{ country }}</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
-        <ion-col>
+        <ion-col class="country">
           <ion-item>
             <ion-label position="stacked">Ciudad</ion-label>
-            <ion-input></ion-input>
+            <ion-select [(ngModel)]="requestForm.city" interface="popover">
+              <ion-select-option *ngFor="let city of cities" [value]="city">{{ city }}</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -48,7 +59,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Dirección</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="requestForm.address"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -56,7 +67,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Cuando espera recibir respuesta?</ion-label>
-            <ion-input></ion-input>
+            <ion-datetime [(ngModel)]="requestForm.responseDate" displayFormat="MMM DD, YYYY"></ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -64,14 +75,14 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Nota</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="requestForm.note"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <br/>
       <ion-row>
         <ion-col>
-          <ion-button expand="full" color="success">Publicar</ion-button>
+          <ion-button (click)="addRequest()" expand="full" color="success">Publicar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
