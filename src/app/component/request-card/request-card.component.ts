@@ -10,12 +10,14 @@ export class RequestCardComponent implements OnInit {
   @Input() title: string;
   @Input() city: string;
   @Input() contact: string;
-  @Input() bloodType: string
+  @Input() bloodType: string;
 
-  requestsEndpoint: string = '/assets/bloodTypes/a+.svg';
+  requestImg: string;
   
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.requestImg = `/assets/bloodTypes/${this.bloodType}.svg`;
+  }
 
 }

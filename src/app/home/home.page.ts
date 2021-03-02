@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GenericService } from '../services/generic.service';
 
 @Component({
@@ -13,10 +14,14 @@ export class HomePage {
 
   requestsEndpoint: string = 'request/';
 
-  constructor(private genericService: GenericService) {
-    this.pushData();
+  constructor(private genericService: GenericService, route: ActivatedRoute) {
+    route.params.subscribe(val => {
+      this.pushData();
+    });
   }
 
+  ngOnInit() {
+  }
 
   pushData() {
     this.genericService.getAll(this.requestsEndpoint, (requests) => {
