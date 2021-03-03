@@ -1,19 +1,21 @@
-  <ion-header>
-    <ion-toolbar class="header-background-color">
-      <ion-title color="light">Health</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-list *ngFor="let request of requests">
-      <app-request-card [title]="request.title" [city]="request.city" [bloodType]="request.bloodType" [contact]="request.contact"></app-request-card>
-    </ion-list>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active"><ion-icon name="add"></ion-icon></ion-fab-button>
-    </ion-fab>
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title color="light">Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list *ngFor="let request of requests">
+    <request-card (onCardClic)="onClicked($event)" [id]="request.id" [title]="request.title" [city]="request.city"
+      [bloodType]="request.bloodType" [contact]="request.contact" [note]="request.note" [address]="request.address">
+    </request-card>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

@@ -33,7 +33,7 @@
         <ion-col>
           <ion-item>
             <ion-label position="stacked">Teléfono</ion-label>
-            <ion-input [(ngModel)]="requestForm.contact" (input)="phoneMask($event.target.value)"></ion-input>
+            <ion-input [(ngModel)]="requestForm.contact" maxlength="14" (input)="phoneMask($event.target.value)"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>

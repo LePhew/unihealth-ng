@@ -34,3 +34,9 @@ ion-fab-button {
 .country {
   max-width: 50%;
 }
+.my-custom-class {
+  --background: #222;
+  --spinner-color: #fff;
+
+  color: #fff;
+}
