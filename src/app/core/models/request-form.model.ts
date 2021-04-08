@@ -1,6 +1,6 @@
 export default class RequestFormModel {
-    country: string = null;
-    city: string = null;
+    provinceId: number = null;
+    municipalityId: number = null;
     bloodType: string = null;
     title: string = null;
     address: string = null;
