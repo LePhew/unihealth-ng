@@ -5,5 +5,5 @@
     }
 </style>
    <circle cx="60" cy="50" r="40" fill="#EA3546" />
-   <text x="25" y="60" fill="white" class="bloodtype">A+</text>
+   <text x="25" y="60" fill="white" class="bloodtype">A-</text>
 </svg>
