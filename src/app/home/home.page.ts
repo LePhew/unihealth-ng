@@ -12,7 +12,8 @@ export class HomePage {
   isDisabled: boolean = false;
   requests: any = [];
 
-  requestsEndpoint: string = 'request/';
+  readonly requestsEndpoint: string = 'request/';
+  readonly municipalityEndpoint: string = 'municipality/';
 
   constructor(private genericService: GenericService, route: ActivatedRoute) {
     route.params.subscribe(val => {
@@ -21,6 +22,7 @@ export class HomePage {
   }
 
   ngOnInit() {
+
   }
 
   pushData() {
@@ -41,6 +43,10 @@ export class HomePage {
         ev.target.disabled = true;
       }
     }, 500);
+  }
+
+  loadOptions() {
+
   }
 
 }

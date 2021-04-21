@@ -4,6 +4,16 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <ion-select></ion-select>
+        <ion-icon name="location-outline"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <ion-select></ion-select>
+        <ion-icon name="eyedrop-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
     <ion-list *ngFor="let request of requests">
       <app-request-card [title]="request.title" [province]="request.province ? request.province.province : ''" [municipality]="request.municipality ? request.municipality.municipality : ''" [bloodType]="request.bloodType" [contact]="request.contact"></app-request-card>
     </ion-list>
