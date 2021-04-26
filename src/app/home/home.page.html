@@ -1,29 +1,43 @@
-  <ion-header>
-    <ion-toolbar class="header-background-color">
-      <ion-title color="light">Health</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-row>
-      <ion-col>
-        <ion-select></ion-select>
-        <ion-icon name="location-outline"></ion-icon>
-      </ion-col>
-      <ion-col>
-        <ion-select></ion-select>
-        <ion-icon name="eyedrop-outline"></ion-icon>
-      </ion-col>
-    </ion-row>
-    <ion-list *ngFor="let request of requests">
-      <app-request-card [title]="request.title" [province]="request.province ? request.province.province : ''" [municipality]="request.municipality ? request.municipality.municipality : ''" [bloodType]="request.bloodType" [contact]="request.contact"></app-request-card>
-    </ion-list>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active"><ion-icon name="add"></ion-icon></ion-fab-button>
-    </ion-fab>
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title color="light">Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col>
+      <!-- <ion-icon name="location-outline"></ion-icon> -->
+      <ion-select class="select-color" [(ngModel)]="selectedProvince" (ngModelChange)="onProvinceChange($event)" >
+        <ion-select-option *ngFor="let province of provinces" [value]="province.id">{{ province.province }}</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+      <!-- <ion-icon name="eyedrop-outline"></ion-icon> -->
+      <ion-select class="select-color" [value]="['Todos']">
+        <ion-select [(ngModel)]="selectedBloodType" interface="popover">
+          <ion-select-option value="Todos">Todos</ion-select-option>
+          <ion-select-option value="A+">A+</ion-select-option>
+          <ion-select-option value="B+">B+</ion-select-option>
+          <ion-select-option value="AB+">AB+</ion-select-option>
+          <ion-select-option value="O+">O+</ion-select-option>
+          <ion-select-option value="B-">B-</ion-select-option>
+          <ion-select-option value="O-">O-</ion-select-option>
+        </ion-select>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-list *ngFor="let request of requests">
+    <app-request-card [title]="request.title" [province]="request.province ? request.province.province : ''"
+      [municipality]="request.municipality ? request.municipality.municipality : ''" [bloodType]="request.bloodType"
+      [contact]="request.contact"></app-request-card>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

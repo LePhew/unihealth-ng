@@ -13,11 +13,19 @@ export class GenericService {
   getAll(componentUrl: string, successCallback: any = () => { }) {
     this.http.get(this.apiUrl + componentUrl).subscribe((response: any) => {
       successCallback(response);
-    },
-      (error) => {
-        console.log(error)
-      });
+    }, (error) => {
+      console.log(error);
+    });
   }
+
+  getWithPagination(componentUrl: string, payload: any, successCallback: any = () => { }) {
+    this.http.post(this.apiUrl + componentUrl, payload).subscribe((response: any) => {
+      successCallback(response);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
   create(componentUrl: string, payload: any, successCallback: any = () => { }) {
     this.http.post(this.apiUrl + componentUrl, payload).subscribe((response: any) => {
       successCallback(response);

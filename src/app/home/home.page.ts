@@ -8,32 +8,51 @@ import { GenericService } from '../services/generic.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  provinces: any[] = [];
   isDisabled: boolean = false;
   requests: any = [];
-
+  selectedProvince: string = "1";
+  selectedBloodType: string = "";
+  isPaginationActive: boolean = false;
+  defaultSettings: any = {skip:0, take:5};
   readonly requestsEndpoint: string = 'request/';
   readonly municipalityEndpoint: string = 'municipality/';
 
   constructor(private genericService: GenericService, route: ActivatedRoute) {
     route.params.subscribe(val => {
-      this.pushData();
+      this.loadRequests();
     });
   }
 
   ngOnInit() {
-
+    this.loadProvinces();
   }
 
-  pushData() {
-    this.genericService.getAll(this.requestsEndpoint, (requests) => {
-      this.requests = requests;
+  loadProvinces() {
+    this.genericService.getAll('province', (response: any) => {
+      this.provinces = response;
     })
+  }
+
+  onProvinceChange(provinceId) {
+    console.log(provinceId);
+  }
+
+  loadRequests() {
+    if (this.isPaginationActive){
+      this.defaultSettings.skip = this.defaultSettings.skip+=5;
+    }
+    this.genericService.getWithPagination(this.requestsEndpoint, this.defaultSettings, (response: any) => {
+      if (response) {
+        this.requests.push(...response);
+        this.isPaginationActive = true;
+      }
+    });
   }
 
   loadData(ev: any) {
     setTimeout(() => {
-      this.pushData();
+      this.loadRequests();
       console.log("Loaded data");
       ev.target.complete();
 
