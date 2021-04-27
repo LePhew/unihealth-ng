@@ -14,19 +14,19 @@ export class RequestCardComponent implements OnInit {
   @Input() bloodType: string;
 
   requestImg: string;
-  
+
   constructor() { }
 
-  ngOnInit() { 
-    this.requestImg = `/assets/bloodTypes/${this.bloodType}.svg`;
+  ngOnInit() {
+    this.requestImg = `/assets/bloodTypes/${this.bloodType}.png`;
     this.municipality = this.titleCase(this.municipality);
   }
 
-  titleCase(str : string) {
+  titleCase(str: string) {
     const splitStr = str.toLowerCase().split(" ");
     for (let i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
-    return splitStr.join(' '); 
- }
+    return splitStr.join(' ');
+  }
 }
