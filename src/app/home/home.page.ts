@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GenericService } from '../services/generic.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,13 +9,14 @@ import { GenericService } from '../services/generic.service';
 export class HomePage {
   provinces: any[] = [];
   isDisabled: boolean = false;
-  requests: any = [];
-  selectedProvince: string = "1";
+  requests: any = null;
+  selectedProvince: string = "0";
   selectedBloodType: string = "";
   isPaginationActive: boolean = false;
-  defaultSettings: any = {skip:0, take:5};
-  readonly requestsEndpoint: string = 'request/';
-  readonly municipalityEndpoint: string = 'municipality/';
+  isFilterActive: boolean = false;
+  defaultSettings: any = { skip: 0, take: 5 };
+  readonly requestsEndpoint: string = 'request';
+  readonly municipalityEndpoint: string = 'municipality';
 
   constructor(private genericService: GenericService, route: ActivatedRoute) {
     route.params.subscribe(val => {
@@ -30,19 +30,33 @@ export class HomePage {
 
   loadProvinces() {
     this.genericService.getAll('province', (response: any) => {
-      this.provinces = response;
+      this.provinces.push({ id: "0", province: "Todos" }, ...response);
     })
   }
 
-  onProvinceChange(provinceId) {
-    console.log(provinceId);
+  loadByProvince() {
+    this.isPaginationActive = false;
+    if (this.selectedProvince == "0") {
+      this.isFilterActive = false;
+      this.loadRequests();
+    } else {
+      this.genericService.getWithBody(`${this.requestsEndpoint}/getByProvince`, { "provinceId": this.selectedProvince }, (response: any) => {
+        if (response) {
+          this.requests = [];
+          this.requests.push(...response);
+        }
+      });
+    }
   }
 
   loadRequests() {
-    if (this.isPaginationActive){
-      this.defaultSettings.skip = this.defaultSettings.skip+=5;
+    if (this.isPaginationActive) {
+      this.defaultSettings.skip = this.defaultSettings.skip += 5;
+    } else {
+      this.requests = [];
+      this.defaultSettings = { skip: 0, take: 5 };
     }
-    this.genericService.getWithPagination(this.requestsEndpoint, this.defaultSettings, (response: any) => {
+    this.genericService.getWithBody(this.requestsEndpoint, this.defaultSettings, (response: any) => {
       if (response) {
         this.requests.push(...response);
         this.isPaginationActive = true;
@@ -52,8 +66,9 @@ export class HomePage {
 
   loadData(ev: any) {
     setTimeout(() => {
-      this.loadRequests();
-      console.log("Loaded data");
+      if (this.selectedProvince == "0") {
+        this.loadRequests();
+      }
       ev.target.complete();
 
       // App logic to determine if all data is loaded

@@ -18,7 +18,7 @@ export class GenericService {
     });
   }
 
-  getWithPagination(componentUrl: string, payload: any, successCallback: any = () => { }) {
+  getWithBody(componentUrl: string, payload: any, successCallback: any = () => { }) {
     this.http.post(this.apiUrl + componentUrl, payload).subscribe((response: any) => {
       successCallback(response);
     }, (error) => {
