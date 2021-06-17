@@ -13,7 +13,7 @@
       </ion-select>
     </ion-col>
   </ion-row>
-  <div *ngIf="requests.length; else noInfoFound">
+  <div *ngIf="requests.length > 0; else noInfoFound">
     <ion-list *ngFor="let request of requests">
       <app-request-card [title]="request.title" [province]="request.province ? request.province.province : ''"
         [municipality]="request.municipality ? request.municipality.municipality : ''" [bloodType]="request.bloodType"
@@ -29,7 +29,7 @@
   </ng-template>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="chevron-up-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

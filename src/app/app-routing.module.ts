@@ -12,6 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+  },
+  {
     path: 'requestform',
     loadChildren: () => import('./request-form/request-form.module').then(m => m.RequestFormPageModule)
   },
@@ -23,6 +27,7 @@ const routes: Routes = [
     path: "**",
     redirectTo: "home"
   }
+
 ];
 
 @NgModule({
