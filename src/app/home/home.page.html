@@ -28,7 +28,7 @@
     <ion-img src="../../assets/images/not-found.png"></ion-img>
   </ng-template>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active">
+    <ion-fab-button color="success" (click)="openModal()" routerLinkActive="router-link-active">
       <ion-icon name="chevron-up-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
