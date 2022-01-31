@@ -24,5 +24,35 @@
         </ion-item>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Localidad</ion-label>
+          <ion-input readonly value="{{ municipality }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Provincia</ion-label>
+          <ion-input readonly value="{{ province }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Espera respuesta</ion-label>
+          <ion-input readonly value="{{ responseDate }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-button color="success">
+    Llamar al contacto
+  </ion-button>
+</ion-footer>

@@ -4,7 +4,7 @@ export default class RequestFormModel {
     bloodType: string = null;
     title: string = null;
     address: string = null;
-    responseDate: Date = new Date();
+    responseDate: Date;
     note: string = null;
     contact: string = null;
     

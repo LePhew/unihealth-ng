@@ -14,6 +14,7 @@ export class RequestCardComponent implements OnInit {
   @Input() municipality: string;
   @Input() contact: string;
   @Input() bloodType: string;
+  @Input() responseDate: string;
 
   requestImg: string;
 
@@ -41,7 +42,10 @@ export class RequestCardComponent implements OnInit {
         title: this.title,
         municipality: this.municipality,
         contact: this.contact,
-        bloodType: this.bloodType
+        bloodType: this.bloodType,
+        province: this.province,
+        responseDate: this.responseDate
+        
       }
     });
     modal.onDidDismiss().then((requestForm) => {

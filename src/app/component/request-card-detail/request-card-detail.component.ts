@@ -11,7 +11,9 @@ export class RequestCardDetailComponent implements OnInit {
   title: string = "";
   municipality: string = "";
   contact: string = "";
-  bloodType: string = ""
+  bloodType: string = "";
+  province: string = "";
+  responseDate: string;
 
   constructor(
     private modalController: ModalController
