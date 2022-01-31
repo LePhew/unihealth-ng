@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-request-card-detail',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestCardDetailComponent implements OnInit {
 
-  constructor() { }
+  title: string = "";
+  municipality: string = "";
+  contact: string = "";
+  bloodType: string = ""
+
+  constructor(
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {}
 
+  dismissModal(){
+    this.modalController.dismiss();
+  }
 }

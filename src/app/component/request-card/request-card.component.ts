@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { RequestCardDetailComponent } from '../request-card-detail/request-card-detail.component';
 
 @Component({
   selector: 'app-request-card',
@@ -15,7 +17,9 @@ export class RequestCardComponent implements OnInit {
 
   requestImg: string;
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {
     this.requestImg = `/assets/bloodTypes/${this.bloodType}.png`;
@@ -28,5 +32,29 @@ export class RequestCardComponent implements OnInit {
       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
     return splitStr.join(' ');
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: RequestCardDetailComponent,
+      componentProps: {
+        title: this.title,
+        municipality: this.municipality,
+        contact: this.contact,
+        bloodType: this.bloodType
+      }
+    });
+    modal.onDidDismiss().then((requestForm) => {
+      
+    });
+    return await modal.present();
+  }
+
+  dismissModal() {
+    this.modalController.dismiss();
+  }
+
+  onClick(){
+    this.openModal()
   }
 }

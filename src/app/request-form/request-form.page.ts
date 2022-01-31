@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import RequestFormModel from '../core/models/request-form.model';
 import { GenericService } from '../services/generic.service';
@@ -21,7 +20,6 @@ export class RequestFormPage implements OnInit {
 
   constructor(
     private genericService: GenericService,
-    private navController: NavController,
     private Router: Router,
     private modalController: ModalController
   ) {}
