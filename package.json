@@ -13,12 +13,23 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular/common": "~17.0.2",
     "@angular/core": "~17.0.2",
     "@angular/forms": "~17.0.2",
     "@angular/platform-browser": "~17.0.2",
     "@angular/platform-browser-dynamic": "~17.0.2",
     "@angular/router": "~17.0.2",
+=======
+    "@angular-devkit/core": "^11.2.11",
+    "@angular-devkit/schematics": "^11.2.11",
+    "@angular/common": "~11.2.0",
+    "@angular/core": "~11.2.0",
+    "@angular/forms": "~11.2.0",
+    "@angular/platform-browser": "~11.2.0",
+    "@angular/platform-browser-dynamic": "~11.2.0",
+    "@angular/router": "~11.2.0",
+>>>>>>> origin/marcos-requestformdetails
     "@capacitor/core": "2.4.6",
     "@ionic/angular": "^7.5.4",
     "rxjs": "^7.5.0",

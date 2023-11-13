@@ -1,19 +1,35 @@
-  <ion-header>
-    <ion-toolbar class="header-background-color">
-      <ion-title color="light">Health</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-list *ngFor="let item of items">
-      <app-request-card title="Joven accidentado" location="Santo Domingo Oeste" contact="809-333-3333"></app-request-card>
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title color="light">Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col>
+      <!-- <ion-icon name="location-outline"></ion-icon> -->
+      <ion-select class="select-color" [(ngModel)]="selectedProvince" (ngModelChange)="loadByProvince()">
+        <ion-select-option *ngFor="let province of provinces" [value]="province.id">{{ province.province }}
+        </ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="requests.length > 0; else noInfoFound">
+    <ion-list *ngFor="let request of requests">
+      <app-request-card [title]="request.title" [province]="request.province ? request.province.province : ''"
+        [municipality]="request.municipality ? request.municipality.municipality : ''" [bloodType]="request.bloodType"
+        [contact]="request.contact" [responseDate] = "request.responseDate"></app-request-card>
     </ion-list>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active"><ion-icon name="add"></ion-icon></ion-fab-button>
-    </ion-fab>
-  </ion-content>
+  </div>
+  <ng-template #noInfoFound>
+    <ion-img src="../../assets/images/not-found.png"></ion-img>
+  </ng-template>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="success" (click)="openModal()" routerLinkActive="router-link-active">
+      <ion-icon name="chevron-up-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

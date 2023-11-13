@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()" color="light">Close</ion-button>
+    </ion-buttons>
+    <ion-title color="light">Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Titulo</ion-label>
+          <ion-input readonly value="{{ title }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Contacto</ion-label>
+          <ion-input readonly value="{{ contact }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Localidad</ion-label>
+          <ion-input readonly value="{{ municipality }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Provincia</ion-label>
+          <ion-input readonly value="{{ province }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Espera respuesta</ion-label>
+          <ion-input readonly value="{{ responseDate }}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-button color="success">
+    Llamar al contacto
+  </ion-button>
+</ion-footer>

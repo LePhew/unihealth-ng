@@ -10,8 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 //Custom Components
 
-
-
 @NgModule({
 <<<<<<< HEAD
     declarations: [AppComponent],
@@ -21,9 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
 =======
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 >>>>>>> origin/marcos-feature-attachtoApi
 })
-export class AppModule { }
+export class AppModule {}
