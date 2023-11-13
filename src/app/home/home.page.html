@@ -1,19 +1,19 @@
-  <!-- <ion-list v-for="item in items" :key="item"> -->
-  <!-- </ion-list> -->
-  
-  <!-- <ion-infinite-scroll
-    @ionInfinite="loadData($event)"
-    threshold="100px"
-    id="infinite-scroll"
-    :disabled="isDisabled"
-  >
-    <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll> -->
-  <!-- <RequestCard></RequestCard> -->
-  <app-header></app-header>
+  <ion-header>
+    <ion-toolbar class="header-background-color">
+      <ion-title color="light">Health</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <ion-content class="ion-padding">
-    <app-request-card></app-request-card>
+    <ion-list *ngFor="let item of items">
+      <app-request-card title="Joven accidentado" location="Santo Domingo Oeste" contact="809-333-3333"></app-request-card>
+    </ion-list>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
     <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button title="requestForm" [routerLink]="['/requestform']" routerLinkActive="router-link-active" color="success">+</ion-fab-button>
+      <ion-fab-button color="success" [routerLink]="['/requestform']" routerLinkActive="router-link-active"><ion-icon name="add"></ion-icon></ion-fab-button>
     </ion-fab>
   </ion-content>

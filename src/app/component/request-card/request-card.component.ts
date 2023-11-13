@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-request-card',
@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestCardComponent implements OnInit {
 
+  @Input() title: string = "";
+  @Input() location: string = "";
+  @Input() contact: string = "";
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

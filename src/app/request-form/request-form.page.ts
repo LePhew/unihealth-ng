@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GenericService } from '../services/generic.service';
 
 @Component({
   selector: 'app-request-form',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestFormPage implements OnInit {
 
-  constructor() { }
+  countries: any[] = [];
+  cities: any[] = [];
+  title: string = "";
+  bloodType: string = "";
+  address: string = "";
+  expectedTime: Date;
+  note: string = "";
+
+
+  constructor(private genericService: GenericService) { }
 
   ngOnInit() {
   }
+
+  addRequest() {
+    console.log("they called me");
+  }
+
 
 }
